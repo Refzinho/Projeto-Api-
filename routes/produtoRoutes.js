@@ -1,10 +1,10 @@
 import express from 'express';
 import { resolve } from 'node:path';
-import { criarCatlogoArquivo } from '../catalogo/catalogoArquivo.js';
+import { criarCatalogoArquivo } from '../catalogo/catalogoArquivo.js';
 
 const caminhoCatalogo = process.env.CATALOGO_ARQUIVO || resolve (import.meta.dirname, '../data/produtos.json'); 
 
-const catalogo = criarCatlogoArquivo(caminhoCatalogo);
+const catalogo = criarCatalogoArquivo(caminhoCatalogo);
 
 export const produtoRoutes = express.Router();
 
