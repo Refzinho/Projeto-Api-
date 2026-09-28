@@ -8,7 +8,7 @@ const catalogo = criarCatalogoArquivo(caminhoCatalogo);
 
 export const produtoRoutes = express.Router();
 
-produtoRoutes.get('/', async (req, resolve, next) => {
+produtoRoutes.get('/', async (req, res, next) => {
     try {
         const produtos = await catalogo.listar();
         res.status(200).json({ sucesso: true, dados: produtos });
@@ -31,6 +31,7 @@ produtoRoutes.post('/', async (req, res) => {
 
 produtoRoutes.get('/:id', async (req, res, next) => {
     try {
+        const id = Number(req.params.id);
         if (!Number.isInteger(id)) return res.status(400).json({erro:'ID deve ser inteiro'});
 
         const produto = await catalogo.buscarPorId(id);
